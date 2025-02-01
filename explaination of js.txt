@@ -1,0 +1,38 @@
+                                    EXPLAINATION OF JAVASCRIPE CODE IN CALCULATOR PROJECT
+
+Chaliye har line ko Roman Urdu mein samjhaata hoon:
+
+```javascript
+const display = document.getElementById("display");
+```
+- Is line mein, HTML page se ek element ko dhoondha jaa raha hai jiska `id="display"` hai. Is element ko variable `display` mein store kiya jaata hai. Yeh aam tor par ek input field hota hai jahan aap numbers ya calculations dekhte ho ya daalte ho.
+
+```javascript
+let appendToDisplay = (input) => display.value += input;
+```
+- Yeh ek function define karta hai jiska naam `appendToDisplay` hai. Is function ko ek `input` diya jata hai. Jab yeh function call hota hai, to yeh jo `input` diya gaya hota hai usse `display` field mein add kar deta hai. `+=` ka matlab hai "jo value already display mein hai, usmein yeh value add kar do".
+
+```javascript
+let ClearDisplay = () => display.value = "";
+```
+- Yeh ek aur function define karta hai jiska naam `ClearDisplay` hai. Jab yeh function call hota hai, to yeh `display` ki value ko empty string (`""`) set kar deta hai, yani display ko saaf kar deta hai.
+
+```javascript
+function calculate(){
+    try{
+        display.value = eval(display.value)
+    } catch(error){
+        display.value = "Error he jani"
+    }
+}
+```
+- Yeh ek function `calculate` define karta hai jo calculation karta hai.
+  - Is function ke andar:
+    - `try` block yeh koshish karta hai ke `display.value` ko evaluate (calculate) kare. `eval()` function jo string diya gaya hai, usse evaluate karta hai (for example, agar `2+3` hai to yeh 5 ho jaata hai).
+    - Agar `eval()` ko koi problem milti hai, jaise syntax error ya invalid expression, to yeh `catch` block mein chala jaata hai.
+    - `catch` block display ko "Error he jani" set kar deta hai, jo yeh batata hai ke calculation mein koi galti ho gayi hai.
+
+### Summary
+- `appendToDisplay` function input ko display mein add karta hai.
+- `ClearDisplay` function display ko saaf karta hai.
+- `calculate` function input ko calculate karne ki koshish karta hai, aur agar koi error hoti hai to ek error message show karta hai.
